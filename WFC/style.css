@@ -27,6 +27,42 @@ input[type="submit"]{
     border: none;
     border-radius: 2px;
 }
-.display{
-    text-align: center;
+.weather{
+    margin: 0 auto;
+    width: 430px;
+}
+.WIcon{
+    float: left;
+}
+.WContent{
+    margin-top: 34px;
+    float: left;
+}
+.location{
+    font-size: 24px;
+    font-weight: bold;
+}
+.temp{
+    font-size: 46px;
+    font-weight: bold;
+}
+.description{
+    float: left;
+    font-weight: bold;
+    margin-right: 4px;
+}
+.feels_like{
+    float: right;
+    color: #666666;
+}
+.temp_max{
+    float: left;
+    font-size: 14px;
+    margin-right: 12px;
+    color: #fc4c4e;
+}
+.temp_min{
+    float: left;
+    font-size: 14px;
+    color: #32aaff;
 }
