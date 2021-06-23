@@ -1,11 +1,13 @@
 var input = document.querySelector('.input');
 var list = document.querySelector('.list');
+var buttons = document.querySelector('.buttons');
 var button = document.querySelector('.button');
 var inputValue = document.querySelector('.inputValue');
 var button2 = document.querySelector('.button2');
 var inputValue2 = document.querySelector('.inputValue2');
 
 button.addEventListener('click',function(){
+    buttons.style.display="block";
     list.style.margin="0px";
     list.style.textAlign = "initial";
     inputValue.style.height = "36px";
@@ -179,3 +181,18 @@ function chk(a){
     }
 }
 
+function food(){
+    var time = new Date().getHours();
+    var temp = document.querySelector('.temp').innerText;
+    var description = document.querySelector('.description').innerText;
+    if(time > 15){           //저녁식사
+        if(description.indexOf('구름') !== -1 || description.indexOf('흐림') !== -1){
+            console.log('구름');
+        } else{
+
+            console.log("구름아님");
+        }
+    } else if (time <= 15) {  //점심식사
+        console.log(description);
+    }
+}
