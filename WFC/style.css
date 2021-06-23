@@ -80,3 +80,6 @@ input[type="submit"]{
     font-size: 14px;
     color: #32aaff;
 }
+.buttons{
+    display: none;
+}
