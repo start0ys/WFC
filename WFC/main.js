@@ -1,3 +1,4 @@
+var foods = document.querySelector('.foods');
 var input = document.querySelector('.input');
 var list = document.querySelector('.list');
 var buttons = document.querySelector('.buttons');
@@ -184,12 +185,17 @@ function randomItem(a) {
     return a[Math.floor(Math.random() * a.length)];
   }
 function food(){
-    var amfoods = new Array("떡복이","라면","초밥","볶음밥","햄버거","짜장면","짬뽕","돈까스","카레","샌드위치");
+    foods.style.display = "block";
+    let exfood = document.querySelector('.exfood');
+    let explanation = document.querySelector('.explanation');
+    exfood.innerHTML="";
+    explanation.innerHTML="";
+    var amfoods = new Array("떡볶이","라면","초밥","볶음밥","햄버거","짜장면","짬뽕","돈까스","카레","샌드위치");
     var pmfoods = new Array("치킨","삼겹살","피자","양꼬치","막창","대창","회","육회","쭈꾸미","목살","갈비");
-    var test = {
+    var ex = {
         물냉면:'뜨거운 여름에 시원한 물냉면 어떠신가요?',비빔냉면:'여름에 시원하고 맛있는 비빔냉면 어떠신가요?',
         삼계탕:'무더운 여름에 몸보신을 위한 삼계탕 어떠신가요?',대하:'가을에는 무조건 먹어야하는 대하! 오늘 어떠신가요?',
-        방어:'겨울에는 무조건 먹어야하는 방어! 오늘 어떠신가요?',수육국밥:'뜨끈하고 든든한 수육국밥은 어떠신가요?',
+        방어회:'겨울에는 무조건 먹어야하는 방어! 오늘 어떠신가요?',수육국밥:'뜨끈하고 든든한 수육국밥은 어떠신가요?',
         돼지국밥:'뜨끈하고 든든한 돼지국밥은 어떠신가요?',순대국밥:'뜨끈하고 든든한 순대국밥은 어떠신가요?',
         김치찌개:'한국인이라면 다들 좋아하는 김치찌개 어떠신가요?',부대찌개:'햄이 가득한 밥 도둑 부대찌개는 어떠신가요?',
         떡볶이:'스트레스받는 요즘 매콤한 떡볶이는 어떠신가요?',라면:'언제 먹어도 맛이있는 라면 어떠신가요?',
@@ -199,76 +205,50 @@ function food(){
         카레:'오늘 하루 맛있는 카레는 어떠신가요?',샌드위치:'간단하면서도 맛있는 샌드위치는 어떠신가요?',
         치킨:'언제 먹어도 맛이있는 치킨! 오늘 어떠신가요?',삼겹살:"기분이 저기압일때는 고기앞으로 가라! 삼겹살은 어떠신가요?",
         피자:'치즈와 토마토소스의 조합 맛있는 피자는 어떠신가요?',양꼬치:'칭따오와 고량주의 환상조합 양꼬치는 어떠신가요?',
-        막창:''
-
-
+        막창:'고소하고 쫄깃한 막창은 어떡신가요?',대창:'고소하고 쫄긴한 대창은 어떠신가요?',
+        회:'신선하고 쫄긴한 회는 어떠신가요?',육회:'고소한 노른자와 비벼먹는 맛있는 육회는 어떠신가요?',
+        쭈꾸미:'스트레스 풀리는 매콤함! 쭈꾸미는 어떠신가요?',목살:'기분이 저기압일때는 고기앞으로 가라! 목살은 어떠신가요?',
+        갈비:'기분이 저기압일때는 고기앞으로 가라! 갈비는 어떠신가요?',파전:'비가오늘 오늘같은 날에는 파전 어떠신가요?',
+        김치전:'비가오늘 오늘같은 날에는 김치전 어떠신가요?',해물파전:'비가오늘 오늘같은 날에는 해물파전 어떠신가요?',
+        보쌈:'매일먹어도 맛있는 고기 오늘은 보쌈으로 어떠신가요?' 
     };
+  
+    var time = new Date().getHours();
+    var date = new Date().getMonth() + 1;
+    var description = document.querySelector('.description').innerText;
+    if (6 < time <= 15) {  //점심식사
+        if(date == 7 || date || 8) {
+            amfoods.push('물냉면','비빔냉면','삼계탕');
+        }
+        if(description.indexOf('구름') !== -1 || description.indexOf('흐림') !== -1){
+            amfoods.push('수육국밥','돼지국밥','순대국밥','김치찌개','부대찌개');
+        }
+        var a = randomItem(amfoods);
+        var b = ex[a];
+        exfood.append(a);
+        explanation.append(b);
+    }
+    else{           //저녁식사
+        if(date ==9 || date == 10){
+            pmfoods.push('대하');
+        }
+        if(date ==12 || date == 1){
+            pmfoods.push('방어회');
+        }
+        if(description.indexOf('비') !== -1 || description.indexOf('소나기') !== -1){
+            pmfoods.push('파전','김치전','보쌈','해물파전');
+        }
+
+        var a = randomItem(pmfoods);
+        var b = ex[a];
+        exfood.append(a);
+        explanation.append(b);
+    } 
+}
+function clothes(){
     // var temp = document.querySelector('.temp').innerText.split("℃")[0];
     // const spring = temp >= 1 && temp >2;
     // const summer = temp >23;
     // const fall = temp > 14 && temp < 23;
     // const winter = temp < 4;
-    var time = new Date().getHours();
-    var date = new Date().getMonth() + 1;
-    var description = document.querySelector('.description').innerText;
-    if(time > 15){           //저녁식사
-        // if(date == 7 || date || 8) {
-            
-        // }
-        if(date ==9 || date == 10){
-            pmfoods.push('대하');
-        }
-        if(date ==12 || date == 1){
-            pmfoods.push('방어회');
-        }
-        if(date == 6){
-            amfoods.push('멍청이','똥멍청이');
-        }
-
-        if(description.indexOf('구름') !== -1 || description.indexOf('흐림') !== -1){
-            pmfoods.push('수육국밥','돼지국밥','순대국밥','김치찌개','부대찌개');
-        }
-        // if(description.indexOf('비') !== -1 || description.indexOf('소나기') !== -1){
-
-        //     // console.log("구름아님");
-        //     // console.log(randomItem(pmfoods));
-        // }
-
-        var a = '라면';
-        var b = test[a];
-        console.log(a);
-        console.log(b);
-        
-        //console.log(pmfoods);
-        //console.log(randomItem(pmfoods));
-    } else if (time <= 15) {  //점심식사
-        // if(date == 7 || date || 8) {
-            
-        // }
-        if(date ==9 || date == 10){
-            pmfoods.push('대하');
-        }
-        if(date ==12 || date == 1){
-            pmfoods.push('방어회');
-        }
-        if(date == 6){
-            amfoods.push('멍청이','똥멍청이');
-        }
-
-        if(description.indexOf('구름') !== -1 || description.indexOf('흐림') !== -1){
-            pmfoods.push('수육국밥','돼지국밥','순대국밥','김치찌개','부대찌개');
-        }
-        // if(description.indexOf('비') !== -1 || description.indexOf('소나기') !== -1){
-
-        //     // console.log("구름아님");
-        //     // console.log(randomItem(pmfoods));
-        // }
-
-        var a = randomItem(pmfoods);
-        var b = test[a];
-        console.log(a);
-        console.log(b);
-        
-        
-    }
 }
