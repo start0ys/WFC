@@ -83,3 +83,20 @@ input[type="submit"]{
 .buttons{
     display: none;
 }
+.foods{
+    display: none;
+    width: 460px;
+    text-align: center;
+    background-color: #e7e7e7;
+    height: 150px;
+}
+.exfood{
+    font-size: 23px;
+    font-weight: bold;
+    margin-top: 14px;
+    border-top-width: 0px;
+    padding-top: 29px;
+}
+.explanation{
+    margin-top: 17px;
+}
